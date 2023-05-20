@@ -24,17 +24,13 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Document } from 'mongoose';
 import { User } from '../users/user.schema';
-import { Company } from '../companies/company.schema';
 export declare class Complaint extends Document {
     user: User;
-    product: Company;
     subject: string;
     category: string;
     description: string;
-    file: string;
     priority: string;
     desiredOutcome: string;
-    terms: boolean;
 }
 export declare const ComplaintSchema: import("mongoose").Schema<Complaint, import("mongoose").Model<Complaint, any, any, any, Document<unknown, any, Complaint> & Omit<Complaint & {
     _id: import("mongoose").Types.ObjectId;

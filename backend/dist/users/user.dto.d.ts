@@ -2,6 +2,6 @@ export declare class CreateDto {
     username: string;
     email: string;
     name: string;
-    phone: string;
+    matNumber: string;
     password: string;
 }

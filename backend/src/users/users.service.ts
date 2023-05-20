@@ -15,17 +15,17 @@ export class UsersService {
     async findById(userId: string): Promise<User>{
         return await this.userModel.findById(userId).exec();
     }
-    async findByUsername(username: string ): Promise<User>{
-        return await this.userModel.findOne({username}).exec();
+    async findByMatnumber(matNumber: string ): Promise<User>{
+        return await this.userModel.findOne({matNumber}).exec();
     }
     async findAll(): Promise<User[]>{
         return await this.userModel.find().exec();
     }
     async exists(param: string){
-        const userName = (this.findByUsername(param))?true:false;
+        const matNumber = (this.findByMatnumber(param))?true:false;
         const id = this.findById(param)?true:false;
         return {
-            username: userName,
+            matnumber: matNumber,
             id: id,
         }
     }

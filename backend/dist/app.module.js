@@ -18,19 +18,23 @@ const auth_service_1 = require("./auth/auth.service");
 const auth_module_1 = require("./auth/auth.module");
 const jwt_1 = require("@nestjs/jwt");
 const mongoose_1 = require("@nestjs/mongoose");
+const config_1 = require("@nestjs/config");
+const passport_1 = require("@nestjs/passport");
+const jwt_strategy_1 = require("./auth/jwt.strategy");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017', {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
+            config_1.ConfigModule.forRoot({
+                envFilePath: ".env",
+                isGlobal: true
             }),
-            complaints_module_1.ComplaintsModule, users_module_1.UsersModule, companies_module_1.CompaniesModule, auth_module_1.AuthModule, jwt_1.JwtModule.register({ secret: 'ligma', signOptions: { expiresIn: '1h' }, }),
+            mongoose_1.MongooseModule.forRoot(process.env.MONGODB_URI),
+            complaints_module_1.ComplaintsModule, users_module_1.UsersModule, companies_module_1.CompaniesModule, auth_module_1.AuthModule, passport_1.PassportModule, jwt_1.JwtModule.register({ secret: 'ligma', signOptions: { expiresIn: '1d' }, })
         ],
         controllers: [app_controller_1.AppController, auth_controller_1.AuthController],
-        providers: [app_service_1.AppService, auth_service_1.AuthService],
+        providers: [app_service_1.AppService, auth_service_1.AuthService, jwt_strategy_1.JwtStrategy],
     })
 ], AppModule);
 exports.AppModule = AppModule;

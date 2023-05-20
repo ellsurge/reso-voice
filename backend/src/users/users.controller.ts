@@ -5,18 +5,18 @@ import { User } from './user.schema';
 import { CreateDto } from './user.dto';
 
 @Controller('users')
-@UseGuards(AuthGuard('jwt'))
+// @UseGuards(AuthGuard('jwt'))
 export class UsersController {
     constructor (private readonly userService: UsersService){}
 
-    @Get()
+    @Get('findall')
     async getAllUsers(): Promise<User[]>{
         return this.userService.findAll();
 
     }
     @Post('create')
     async create(@Body() createUserDto: CreateDto):Promise<User>{
-        if(!(await this.userService.exists(createUserDto.username)).username ){
+        if((await this.userService.exists(createUserDto.matNumber)).matnumber ){
             throw new ConflictException ("user alredy exists")
         }
         return this.userService.create(createUserDto)

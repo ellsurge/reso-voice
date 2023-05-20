@@ -19,8 +19,8 @@ let AuthService = class AuthService {
         this.userService = userService;
         this.jwtService = jwtService;
     }
-    async validateUser(username, password) {
-        const user = await this.userService.findByUsername(username);
+    async validateUser(matNumber, password) {
+        const user = await this.userService.findByMatnumber(matNumber);
         if (user_schema_1.User && user.comparePassword(password)) {
             return user;
         }
@@ -30,7 +30,7 @@ let AuthService = class AuthService {
         return this.userService.findById(userId);
     }
     async generateToken(user) {
-        const payload = { sub: user.id };
+        const payload = { sub: user.matNumber };
         return this.jwtService.sign(payload);
     }
 };

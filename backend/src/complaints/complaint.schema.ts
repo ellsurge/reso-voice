@@ -8,8 +8,6 @@ export class Complaint extends Document {
   @Prop({ type: User, required: true })
   user: User;
 
-  @Prop({ type: Company, required: true }) // Include the product field from the Company schema
-  product: Company;
 
   @Prop({ required: true })
   subject: string;
@@ -20,17 +18,12 @@ export class Complaint extends Document {
   @Prop({ required: true })
   description: string;
 
-  @Prop()
-  file: string;
-
   @Prop({ required: true })
   priority: string;
 
   @Prop({ required: true })
   desiredOutcome: string;
 
-  @Prop({ required: true })
-  terms: boolean;
 }
 
 export const ComplaintSchema = SchemaFactory.createForClass(Complaint);

@@ -11,9 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserSchema = exports.User = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const mongoose_2 = require("mongoose");
 const bcrypt_1 = require("bcrypt");
-let User = class User extends mongoose_2.Document {
+let User = class User {
     async comparePassword(password) {
         return await bcrypt_1.default.compare(password, this.password);
     }
@@ -29,7 +28,7 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
-], User.prototype, "phoneNumber", void 0);
+], User.prototype, "matNumber", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)

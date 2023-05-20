@@ -6,10 +6,10 @@ export declare class UsersService {
     constructor(userModel: Model<User>);
     create(userData: CreateDto): Promise<User>;
     findById(userId: string): Promise<User>;
-    findByUsername(username: string): Promise<User>;
+    findByMatnumber(matNumber: string): Promise<User>;
     findAll(): Promise<User[]>;
     exists(param: string): Promise<{
-        username: boolean;
+        matnumber: boolean;
         id: boolean;
     }>;
 }
