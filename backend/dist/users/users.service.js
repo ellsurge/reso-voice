@@ -12,32 +12,41 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CompaniesService = void 0;
+exports.UsersService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
-let CompaniesService = class CompaniesService {
-    constructor(companyModel) {
-        this.companyModel = companyModel;
+const user_schema_1 = require("./user.schema");
+let UsersService = class UsersService {
+    constructor(userModel) {
+        this.userModel = userModel;
     }
-    async create(companyData) {
-        const newCompany = new this.companyModel(companyData);
-        return await newCompany.save();
+    async create(userData) {
+        const newUser = new this.userModel(userData);
+        return await newUser.save();
     }
-    async getAll() {
-        return await this.companyModel.find().exec();
+    async findById(userId) {
+        return await this.userModel.findById(userId).exec();
     }
-    async update(companyID, newData) {
-        return await this.companyModel.findByIdAndUpdate(companyID, newData, { new: true }).exec();
+    async findByUsername(username) {
+        return await this.userModel.findOne({ username }).exec();
     }
-    async delete(companyId) {
-        return await this.companyModel.findByIdAndDelete(companyId);
+    async findAll() {
+        return await this.userModel.find().exec();
+    }
+    async exists(param) {
+        const userName = (this.findByUsername(param)) ? true : false;
+        const id = this.findById(param) ? true : false;
+        return {
+            username: userName,
+            id: id,
+        };
     }
 };
-CompaniesService = __decorate([
+UsersService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)('Company')),
+    __param(0, (0, mongoose_1.InjectModel)(user_schema_1.User.name)),
     __metadata("design:paramtypes", [mongoose_2.Model])
-], CompaniesService);
-exports.CompaniesService = CompaniesService;
-//# sourceMappingURL=companies.service.js.map
+], UsersService);
+exports.UsersService = UsersService;
+//# sourceMappingURL=users.service.js.map

@@ -6,11 +6,19 @@ import { UsersModule } from './users/users.module';
 import { CompaniesModule } from './companies/companies.module';
 import { AuthController } from './auth/auth.controller';
 import { AuthService } from './auth/auth.service';
-import { DatabaseModule } from './database/database.module';
+import { AuthModule } from './auth/auth.module';
+import { JwtModule } from '@nestjs/jwt';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [ComplaintsModule, UsersModule, CompaniesModule, DatabaseModule],
+  imports: [        
+  MongooseModule.forRoot('mongodb://localhost:27017',
+  {
+      useNewUrlParser:true,
+      useUnifiedTopology:true,
+  }),
+    ComplaintsModule, UsersModule, CompaniesModule, AuthModule, JwtModule.register({secret:'ligma', signOptions:{expiresIn:'1h'},}),],
   controllers: [AppController, AuthController],
   providers: [AppService, AuthService],
-})
+})  
 export class AppModule {}

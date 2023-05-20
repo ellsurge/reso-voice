@@ -15,12 +15,20 @@ const users_module_1 = require("./users/users.module");
 const companies_module_1 = require("./companies/companies.module");
 const auth_controller_1 = require("./auth/auth.controller");
 const auth_service_1 = require("./auth/auth.service");
-const database_module_1 = require("./database/database.module");
+const auth_module_1 = require("./auth/auth.module");
+const jwt_1 = require("@nestjs/jwt");
+const mongoose_1 = require("@nestjs/mongoose");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [complaints_module_1.ComplaintsModule, users_module_1.UsersModule, companies_module_1.CompaniesModule, database_module_1.DatabaseModule],
+        imports: [
+            mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017', {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+            }),
+            complaints_module_1.ComplaintsModule, users_module_1.UsersModule, companies_module_1.CompaniesModule, auth_module_1.AuthModule, jwt_1.JwtModule.register({ secret: 'ligma', signOptions: { expiresIn: '1h' }, }),
+        ],
         controllers: [app_controller_1.AppController, auth_controller_1.AuthController],
         providers: [app_service_1.AppService, auth_service_1.AuthService],
     })

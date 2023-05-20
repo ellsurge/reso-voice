@@ -27,6 +27,8 @@ export declare class User extends Document {
     name: string;
     email: string;
     phoneNumber: string;
+    password: string;
+    comparePassword(password: string): Promise<boolean>;
 }
 export declare const UserSchema: import("mongoose").Schema<User, import("mongoose").Model<User, any, any, any, Document<unknown, any, User> & Omit<User & {
     _id: import("mongoose").Types.ObjectId;

@@ -9,22 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CompanySchema = exports.Company = void 0;
-const mongoose_1 = require("@nestjs/mongoose");
-const mongoose_2 = require("mongoose");
-let Company = class Company extends mongoose_2.Document {
-};
+exports.LoginDto = void 0;
+const class_validator_1 = require("class-validator");
+class LoginDto {
+}
 __decorate([
-    (0, mongoose_1.Prop)({ required: true }),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], Company.prototype, "name", void 0);
+], LoginDto.prototype, "username", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ required: true }),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], Company.prototype, "description", void 0);
-Company = __decorate([
-    (0, mongoose_1.Schema)()
-], Company);
-exports.Company = Company;
-exports.CompanySchema = mongoose_1.SchemaFactory.createForClass(Company);
-//# sourceMappingURL=company.schema.js.map
+], LoginDto.prototype, "password", void 0);
+exports.LoginDto = LoginDto;
+//# sourceMappingURL=auth.dto.js.map

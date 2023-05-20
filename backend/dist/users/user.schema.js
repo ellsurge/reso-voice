@@ -12,7 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserSchema = exports.User = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
+const bcrypt_1 = require("bcrypt");
 let User = class User extends mongoose_2.Document {
+    async comparePassword(password) {
+        return await bcrypt_1.default.compare(password, this.password);
+    }
 };
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
@@ -26,6 +30,10 @@ __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], User.prototype, "phoneNumber", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], User.prototype, "password", void 0);
 User = __decorate([
     (0, mongoose_1.Schema)()
 ], User);

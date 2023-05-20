@@ -12,11 +12,12 @@ const companies_controller_1 = require("./companies.controller");
 const companies_service_1 = require("./companies.service");
 const mongoose_1 = require("@nestjs/mongoose");
 const company_schema_1 = require("./company.schema");
+const company_schema_2 = require("./company.schema");
 let CompaniesModule = class CompaniesModule {
 };
 CompaniesModule = __decorate([
     (0, common_1.Module)({
-        imports: [mongoose_1.MongooseModule.forFeature([name, company_schema_1.CompanySchema])],
+        imports: [mongoose_1.MongooseModule.forFeature([{ name: company_schema_2.Company.name, schema: company_schema_1.CompanySchema }])],
         controllers: [companies_controller_1.CompaniesController],
         providers: [companies_service_1.CompaniesService]
     })

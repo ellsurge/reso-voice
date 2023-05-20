@@ -6,20 +6,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DatabaseModule = void 0;
+exports.AuthModule = void 0;
 const common_1 = require("@nestjs/common");
-const mongoose_1 = require("@nestjs/mongoose");
-let DatabaseModule = class DatabaseModule {
+const auth_controller_1 = require("./auth.controller");
+const auth_service_1 = require("./auth.service");
+const jwt_1 = require("@nestjs/jwt");
+const users_module_1 = require("../users/users.module");
+let AuthModule = class AuthModule {
 };
-DatabaseModule = __decorate([
+AuthModule = __decorate([
     (0, common_1.Module)({
-        imports: [
-            mongoose_1.MongooseModule.forRoot('mongodb://localhost/reso-voice', {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-            }),
-        ]
+        imports: [jwt_1.JwtModule, users_module_1.UsersModule],
+        controllers: [auth_controller_1.AuthController],
+        providers: [auth_service_1.AuthService]
     })
-], DatabaseModule);
-exports.DatabaseModule = DatabaseModule;
-//# sourceMappingURL=database.module.js.map
+], AuthModule);
+exports.AuthModule = AuthModule;
+//# sourceMappingURL=auth.module.js.map
