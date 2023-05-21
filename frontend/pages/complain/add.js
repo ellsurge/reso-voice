@@ -22,7 +22,7 @@ export default function Add(){
                         </div>
 
                         <div className="col-span-full">
-                        <label for="about" className="block text-sm font-medium leading-6 text-gray-900">About</label>
+                        <label for="about" className="block text-sm font-medium leading-6 text-gray-900">Description</label>
                         <div className="mt-2">
                             <textarea id="about" name="about" rows="3" className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
                         </div>
@@ -66,7 +66,7 @@ export default function Add(){
 
                     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div className="sm:col-span-3">
-                        <label for="first-name" className="block text-sm font-medium leading-6 text-gray-900">First name</label>
+                        <label for="first-name" className="block text-sm font-medium leading-6 text-gray-900">Subject</label>
                         <div className="mt-2">
                             <input type="text" name="first-name" id="first-name" autocomplete="given-name" className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
                         </div>
@@ -87,7 +87,7 @@ export default function Add(){
                         </div>
 
                         <div className="sm:col-span-3">
-                        <label for="country" className="block text-sm font-medium leading-6 text-gray-900">Country</label>
+                        <label for="country" className="block text-sm font-medium leading-6 text-gray-900">Category</label>
                         <div className="mt-2">
                             <select id="country" name="country" autocomplete="country-name" className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                             <option>United States</option>
@@ -105,7 +105,7 @@ export default function Add(){
                         </div>
 
                         <div className="sm:col-span-2 sm:col-start-1">
-                        <label for="city" className="block text-sm font-medium leading-6 text-gray-900">City</label>
+                        <label for="city" className="block text-sm font-medium leading-6 text-gray-900">Desired Outcome</label>
                         <div className="mt-2">
                             <input type="text" name="city" id="city" autocomplete="address-level2" className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
                         </div>
@@ -140,7 +140,7 @@ export default function Add(){
                                 <input id="comments" name="comments" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
                             </div>
                             <div className="text-sm leading-6">
-                                <label for="comments" className="font-medium text-gray-900">Comments</label>
+                                <label for="comments" className="font-medium text-gray-900">Priority</label>
                                 <p className="text-gray-500">Get notified when someones posts a comment on a posting.</p>
                             </div>
                             </div>
