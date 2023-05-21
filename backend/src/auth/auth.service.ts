@@ -10,12 +10,17 @@ export class AuthService {
         private readonly jwtService: JwtService,
     ){}
     async validateUser(matNumber:string, password:string): Promise<User>{
+        console.log(password);
+        
         const user = await this.userService.findByMatnumber(matNumber);
-        if (User && user.comparePassword(password)){
+        console.log("compare",await user.comparePassword(password));
+        if (user && await user.comparePassword(password)){
+            console.log(user.comparePassword())
             return user;
 
-        }
+        }else{
         return null;
+        }
     }
     async validateUserById(userId: string): Promise<User>{
         return this.userService.findById(userId);

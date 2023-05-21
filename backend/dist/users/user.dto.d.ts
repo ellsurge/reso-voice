@@ -5,3 +5,6 @@ export declare class CreateDto {
     matNumber: string;
     password: string;
 }
+export declare class FindDto {
+    matNumber: string;
+}

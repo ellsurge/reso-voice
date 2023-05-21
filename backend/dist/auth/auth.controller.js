@@ -21,7 +21,8 @@ let AuthController = class AuthController {
         this.authService = authService;
     }
     async login(loginDto) {
-        const user = await this.authService.validateUser(loginDto.username, loginDto.password);
+        const user = await this.authService.validateUser(loginDto.matNumber, loginDto.password);
+        console.log("login:", user);
         if (!user) {
             throw new common_1.UnauthorizedException('Invalid credentials');
         }
@@ -30,7 +31,7 @@ let AuthController = class AuthController {
     }
 };
 __decorate([
-    (0, common_1.Post)('login'),
+    (0, common_1.Get)('login'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [auth_dto_1.LoginDto]),

@@ -7,3 +7,8 @@ export class CreateDto{
     password: string;
     
 }
+
+export class FindDto{
+    matNumber: string
+
+}
