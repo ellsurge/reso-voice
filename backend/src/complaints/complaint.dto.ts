@@ -6,9 +6,8 @@ export class CreateDto{
     subject:string;
     category:string;
     description:string;
-    file:string;
     priority:string;
     desiredOutcome:string;
-    terms:boolean;
+
 
 }

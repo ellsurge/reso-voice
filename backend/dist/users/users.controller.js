@@ -14,7 +14,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
-const passport_1 = require("@nestjs/passport");
 const users_service_1 = require("./users.service");
 const user_dto_1 = require("./user.dto");
 let UsersController = class UsersController {
@@ -24,19 +23,30 @@ let UsersController = class UsersController {
     async getAllUsers() {
         return this.userService.findAll();
     }
+    async find(matNumber) {
+        return await this.userService.findByMatnumber(matNumber);
+    }
     async create(createUserDto) {
-        if (!(await this.userService.exists(createUserDto.username)).username) {
+        console.log(createUserDto.matNumber);
+        if ((await this.userService.findByMatnumber(createUserDto.matNumber))) {
             throw new common_1.ConflictException("user alredy exists");
         }
         return this.userService.create(createUserDto);
     }
 };
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)('findall'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "getAllUsers", null);
+__decorate([
+    (0, common_1.Get)('find'),
+    __param(0, (0, common_1.Query)('matNumber')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "find", null);
 __decorate([
     (0, common_1.Post)('create'),
     __param(0, (0, common_1.Body)()),
@@ -46,7 +56,6 @@ __decorate([
 ], UsersController.prototype, "create", null);
 UsersController = __decorate([
     (0, common_1.Controller)('users'),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
     __metadata("design:paramtypes", [users_service_1.UsersService])
 ], UsersController);
 exports.UsersController = UsersController;

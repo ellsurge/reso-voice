@@ -5,7 +5,7 @@ export declare class AuthService {
     private readonly userService;
     private readonly jwtService;
     constructor(userService: UsersService, jwtService: JwtService);
-    validateUser(username: string, password: string): Promise<User>;
+    validateUser(matNumber: string, password: string): Promise<User>;
     validateUserById(userId: string): Promise<User>;
     generateToken(user: User): Promise<string>;
 }

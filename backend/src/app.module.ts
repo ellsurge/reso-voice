@@ -9,16 +9,31 @@ import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
 import { JwtModule } from '@nestjs/jwt';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule } from '@nestjs/config';
+import { PassportModule } from '@nestjs/passport';
+import { JwtStrategy } from './auth/jwt.strategy';
 
+
+// config();
 @Module({
-  imports: [        
-  MongooseModule.forRoot('mongodb://localhost:27017',
-  {
-      useNewUrlParser:true,
-      useUnifiedTopology:true,
-  }),
-    ComplaintsModule, UsersModule, CompaniesModule, AuthModule, JwtModule.register({secret:'ligma', signOptions:{expiresIn:'1h'},}),],
+  imports: [   
+    ConfigModule.forRoot({
+      envFilePath: ".env",
+      isGlobal: true
+    }),     
+    MongooseModule.forRoot(process.env.MONGODB_URI),
+    ComplaintsModule, UsersModule, CompaniesModule, AuthModule, PassportModule, JwtModule.register({secret:'ligma', signOptions:{expiresIn:'1d'},})
+  ],
   controllers: [AppController, AuthController],
-  providers: [AppService, AuthService],
+  providers: [AppService, AuthService, JwtStrategy],
 })  
-export class AppModule {}
+export class AppModule {
+  // constructor(private readonly connection: MongooseModule) {
+  //   this.logDatabaseConnection();
+  // }
+
+  // private logDatabaseConnection() {;
+  //   console.log(`MongoDB connected: ${this.connection}`);
+  // }
+}
+

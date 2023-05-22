@@ -9,20 +9,25 @@ export class AuthService {
         private readonly userService: UsersService,
         private readonly jwtService: JwtService,
     ){}
-    async validateUser(username:string, password:string): Promise<User>{
-        const user = await this.userService.findByUsername(username);
-        if (User && user.comparePassword(password)){
+    async validateUser(matNumber:string, password:string): Promise<User>{
+        console.log(password);
+        
+        const user = await this.userService.findByMatnumber(matNumber);
+        console.log("compare",await user.comparePassword(password));
+        if (user && await user.comparePassword(password)){
+            console.log(user.comparePassword())
             return user;
 
-        }
+        }else{
         return null;
+        }
     }
     async validateUserById(userId: string): Promise<User>{
         return this.userService.findById(userId);
     }
 
     async generateToken(user: User):Promise<string>{
-        const payload = {sub:user.id};
+        const payload = {sub:user.matNumber};
         return this.jwtService.sign(payload);
     }
 }

@@ -14,9 +14,6 @@ const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const bcrypt_1 = require("bcrypt");
 let User = class User extends mongoose_2.Document {
-    async comparePassword(password) {
-        return await bcrypt_1.default.compare(password, this.password);
-    }
 };
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
@@ -29,7 +26,7 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
-], User.prototype, "phoneNumber", void 0);
+], User.prototype, "matNumber", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
@@ -39,4 +36,8 @@ User = __decorate([
 ], User);
 exports.User = User;
 exports.UserSchema = mongoose_1.SchemaFactory.createForClass(User);
+exports.UserSchema.methods.comparePassword = async function (password) {
+    console.log("bcry", password, this.password);
+    return (0, bcrypt_1.compare)(password, this.password);
+};
 //# sourceMappingURL=user.schema.js.map

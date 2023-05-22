@@ -11,10 +11,10 @@ export class JwtStrategy extends PassportStrategy(Strategy){
     constructor(private readonly authService: AuthService){
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-            secretOrKeey:'ligma'
+            secretOrKey:'ligma'
         })
     }
-    async validate(payload: JwtPayload): Promise<any>{
+    async validate(payload: any): Promise<any>{
         const user= await this.authService.validateUserById(payload.sub);
         if (!user){
             throw new UnauthorizedException();

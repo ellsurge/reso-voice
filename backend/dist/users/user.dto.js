@@ -1,7 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateDto = void 0;
+exports.FindDto = exports.CreateDto = void 0;
 class CreateDto {
 }
 exports.CreateDto = CreateDto;
+class FindDto {
+}
+exports.FindDto = FindDto;
 //# sourceMappingURL=user.dto.js.map
