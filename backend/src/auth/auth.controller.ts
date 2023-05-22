@@ -8,7 +8,7 @@ export class AuthController {
     {
 
     }
-    @Get('login')
+    @Post('login')
     async login(@Body() loginDto: LoginDto): Promise<{accessToken:String}>{
         const user = await this.authService.validateUser(loginDto.matNumber, loginDto.password);
         console.log("login:",user)
@@ -16,6 +16,7 @@ export class AuthController {
             throw new UnauthorizedException('Invalid credentials');
         }
         const accessToken  = await this.authService.generateToken(user);
+        console.log("login success")
         return {accessToken};
 
     }

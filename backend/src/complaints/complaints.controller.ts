@@ -8,18 +8,18 @@ export class ComplaintsController {
     constructor(private readonly complaintsServices :ComplaintsService){}
     //TODO
     //[] get only 3
-    @Get()
+    @Get('latest')
     async latest():Promise <Complaint[]>{
-        return await this.complaintsServices.getAll()[3]
+        return await this.complaintsServices.getLatest()
     }
-    @Get()
+    @Get('')
     async all():Promise<Complaint[]>{
         return await this.complaintsServices.getAll()
     }
-    //TODO
-    //[] 
-    @Post()
+
+    @Post('create')
     async create(@Body() createDto:CreateDto):Promise<Complaint>{
+        
         return await this.complaintsServices.create(createDto);
     }
     

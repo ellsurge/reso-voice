@@ -24,11 +24,14 @@ let ComplaintsService = class ComplaintsService {
         const newComplaint = new this.complaintModel(complaintData);
         return await newComplaint.save();
     }
+    async getLatest() {
+        return await this.complaintModel.find().sort({ createdAt: -1 }).limit(3).exec();
+    }
     async getAll() {
         return await this.complaintModel.find().exec();
     }
     async delete(complaintId) {
-        return await this.complaintModel.findByIdAndDelete(complaintId).exec();
+        return await this.complaintModel.findByIdAndDelete(complaintId).sort({ createdAt: -1 }).exec();
     }
 };
 ComplaintsService = __decorate([

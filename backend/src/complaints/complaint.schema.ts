@@ -1,13 +1,13 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { User } from '../users/user.schema';
-import { Company } from '../companies/company.schema'; // Import the Company schema
 
 @Schema()
 export class Complaint extends Document {
   @Prop({ type: User, required: true })
   user: User;
-
+  @Prop({ required: true })
+  title: string;
 
   @Prop({ required: true })
   subject: string;
@@ -23,6 +23,9 @@ export class Complaint extends Document {
 
   @Prop({ required: true })
   desiredOutcome: string;
+
+  @Prop({ default: Date.now }) 
+  createdAt: Date;
 
 }
 

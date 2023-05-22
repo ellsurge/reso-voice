@@ -1,7 +1,7 @@
 import { User } from "src/users/user.schema"
 
 export class CreateDto{
-    title:String;
+    title:string;
     user: User;
     subject:string;
     category:string;

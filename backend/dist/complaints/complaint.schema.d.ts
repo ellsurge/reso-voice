@@ -26,11 +26,13 @@ import { Document } from 'mongoose';
 import { User } from '../users/user.schema';
 export declare class Complaint extends Document {
     user: User;
+    title: string;
     subject: string;
     category: string;
     description: string;
     priority: string;
     desiredOutcome: string;
+    createdAt: Date;
 }
 export declare const ComplaintSchema: import("mongoose").Schema<Complaint, import("mongoose").Model<Complaint, any, any, any, Document<unknown, any, Complaint> & Omit<Complaint & {
     _id: import("mongoose").Types.ObjectId;

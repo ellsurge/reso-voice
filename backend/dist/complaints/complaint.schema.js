@@ -22,6 +22,10 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
+], Complaint.prototype, "title", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
 ], Complaint.prototype, "subject", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
@@ -39,6 +43,10 @@ __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Complaint.prototype, "desiredOutcome", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ default: Date.now }),
+    __metadata("design:type", Date)
+], Complaint.prototype, "createdAt", void 0);
 Complaint = __decorate([
     (0, mongoose_1.Schema)()
 ], Complaint);

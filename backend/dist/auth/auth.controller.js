@@ -27,11 +27,12 @@ let AuthController = class AuthController {
             throw new common_1.UnauthorizedException('Invalid credentials');
         }
         const accessToken = await this.authService.generateToken(user);
+        console.log("login success");
         return { accessToken };
     }
 };
 __decorate([
-    (0, common_1.Get)('login'),
+    (0, common_1.Post)('login'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [auth_dto_1.LoginDto]),

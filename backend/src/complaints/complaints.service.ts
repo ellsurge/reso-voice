@@ -15,11 +15,15 @@ export class ComplaintsService {
         const newComplaint= new this.complaintModel(complaintData);
         return await newComplaint.save();
     }
+    async  getLatest():Promise<Complaint[]>{
+        return await this.complaintModel.find().sort({ createdAt: -1 }).limit(3).exec();
+
+    }
     async getAll():Promise<Complaint[]>{
         return await this.complaintModel.find().exec();
     }
     async delete(complaintId:string):Promise<Complaint>{
-        return await this.complaintModel.findByIdAndDelete(complaintId).exec();
+        return await this.complaintModel.findByIdAndDelete(complaintId).sort({ createdAt: -1 }).exec();
 
     }
 }

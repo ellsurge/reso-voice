@@ -21,7 +21,7 @@ let ComplaintsController = class ComplaintsController {
         this.complaintsServices = complaintsServices;
     }
     async latest() {
-        return await this.complaintsServices.getAll()[3];
+        return await this.complaintsServices.getLatest();
     }
     async all() {
         return await this.complaintsServices.getAll();
@@ -31,19 +31,19 @@ let ComplaintsController = class ComplaintsController {
     }
 };
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)('latest'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], ComplaintsController.prototype, "latest", null);
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)(''),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], ComplaintsController.prototype, "all", null);
 __decorate([
-    (0, common_1.Post)(),
+    (0, common_1.Post)('create'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [complaint_dto_1.CreateDto]),
