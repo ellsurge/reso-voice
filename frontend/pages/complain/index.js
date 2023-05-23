@@ -12,7 +12,7 @@ export default function getAllComplaints(){
     return(
         <div className={style.complaintsBoxes}>
             {data.map(({title,id, user, subject, category,description, priority, desiredOutcome})=>(
-                <div className={style.complaintsBox} key={id}>
+                <div className={[style.complaintsBox]} key={id}>
                     <p><span>{user.name}: </span> </p>
                     <p><span>{title}: </span> </p>
                     <p><span>{subject}: </span> </p>

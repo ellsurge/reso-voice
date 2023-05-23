@@ -37,7 +37,6 @@ User = __decorate([
 exports.User = User;
 exports.UserSchema = mongoose_1.SchemaFactory.createForClass(User);
 exports.UserSchema.methods.comparePassword = async function (password) {
-    console.log("bcry", password, this.password);
     return (0, bcrypt_1.compare)(password, this.password);
 };
 //# sourceMappingURL=user.schema.js.map
