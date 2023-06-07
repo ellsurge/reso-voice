@@ -1,10 +1,16 @@
 
 import style from './style.module.css';
+import useSWR from 'swr';
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'] })
+const fetcher  = (...args)=>fetch(...args).then(res=>res.json())
 export default function Add(){
+    const {data, error} = useSWR(`http://localhost:3001/complaints`, fetcher);
+    if (error) return <div>Failed to load</div>;
     return (
         <main className={`flex min-h-screen flex-col items-center justify-between p-24 `}>
 
-            <form  action="/send-data-here" method="post" className={style.container}>
+            <form  action="http://localhost:3001/complaints/add" method="post" className={style.container}>
                 <div className="space-y-12">
 
 
@@ -13,12 +19,12 @@ export default function Add(){
                     <p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>
 
                     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                        <div className="sm:col-span-6">
+                        {/* <div className="sm:col-span-6">
                         <label for="title" className="block text-sm font-medium leading-6 text-gray-900">Title</label>
                         <div className="mt-2">
                             <input type="text" name="title" id="title" autocomplete="given-name" className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
                         </div>
-                        </div>
+                        </div> */}
 
                         <div className="sm:col-span-6">
                         <label for="subject" className="block text-sm font-medium leading-6 text-gray-900">Subject</label>

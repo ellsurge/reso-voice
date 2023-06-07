@@ -11,7 +11,7 @@ const fetcher  = (...args)=>fetch(...args).then(res=>res.json())
 
 export default function Home() {
   console.log("API--------",apiUrl)
-  const {data, error} = useSWR(`${apiUrl}/complaints`, fetcher);
+  const {data, error} = useSWR(`http://localhost:3001/complaints`, fetcher);
     if (error) return <div>Failed to load</div>;
     if(!data) return <div>Loading...</div>;
   return (
