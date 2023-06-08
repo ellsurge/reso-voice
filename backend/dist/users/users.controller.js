@@ -26,6 +26,9 @@ let UsersController = class UsersController {
     async find(matNumber) {
         return await this.userService.findByMatnumber(matNumber);
     }
+    async get(id) {
+        return await this.userService.findById(id);
+    }
     async create(createUserDto) {
         console.log(createUserDto.matNumber);
         if ((await this.userService.findByMatnumber(createUserDto.matNumber))) {
@@ -47,6 +50,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "find", null);
+__decorate([
+    (0, common_1.Get)('get'),
+    __param(0, (0, common_1.Query)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "get", null);
 __decorate([
     (0, common_1.Post)('create'),
     __param(0, (0, common_1.Body)()),

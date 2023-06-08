@@ -19,6 +19,11 @@ export class UsersController {
 
         return await this.userService.findByMatnumber(matNumber)
     }
+    @Get('get')
+    async get(@Query('id') id:string):Promise<User>{
+
+        return await this.userService.findById(id)
+    }
     @Post('create')
     async create(@Body() createUserDto: CreateDto):Promise<User>{
         console.log(createUserDto.matNumber)
