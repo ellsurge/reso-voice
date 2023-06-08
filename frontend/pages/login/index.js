@@ -7,6 +7,7 @@ export default function Login(){
     const [matNumber, setMat]  = useState();
     const [password, setPass] = useState();
     const router = useRouter();
+    console.log(apiUrl);
 
     const hanler = async (event)=>{
         event.preventDefault();
@@ -22,7 +23,7 @@ export default function Login(){
 
             if(response.ok){
                 const accessToken = await response.json();
-                localStorage.setItem('accessToken', accessToken)
+                localStorage.setItem('accessToken', accessToken.accessToken)
                 console.log(response);
                 console.log(accessToken);
                 router.push('/complain');

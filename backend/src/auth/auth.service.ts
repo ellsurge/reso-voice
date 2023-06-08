@@ -15,7 +15,6 @@ export class AuthService {
         const user = await this.userService.findByMatnumber(matNumber);
         console.log("compare",await user.comparePassword(password));
         if (user && await user.comparePassword(password)){
-            console.log(user.comparePassword())
             return user;
 
         }else{
