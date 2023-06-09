@@ -6,6 +6,6 @@ export declare class UsersController {
     constructor(userService: UsersService);
     getAllUsers(): Promise<User[]>;
     find(matNumber: string): Promise<User>;
-    get(id: string): Promise<User>;
+    gets(id: string): Promise<User>;
     create(createUserDto: CreateDto): Promise<User>;
 }

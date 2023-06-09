@@ -24,6 +24,8 @@ export default function Login(){
             if(response.ok){
                 const accessToken = await response.json();
                 localStorage.setItem('accessToken', accessToken.accessToken)
+                localStorage.setItem('matnumber', matNumber)
+
                 console.log(response);
                 console.log(accessToken);
                 router.push('/complain');

@@ -37,11 +37,13 @@ let UsersService = class UsersService {
         const { password } = userData, rest = __rest(userData, ["password"]);
         const hashedPassword = await (0, bcrypt_1.hash)(password, 10);
         const newUser = new this.userModel(Object.assign(Object.assign({}, rest), { password: hashedPassword }));
-        console.log("new user", newUser);
+        console.log('new user', newUser);
         return await newUser.save();
     }
     async findById(userId) {
-        return await this.userModel.findById(userId).exec();
+        const user = await this.userModel.findById(userId).exec();
+        console.log(user);
+        return user;
     }
     async findByMatnumber(mat) {
         try {
@@ -50,6 +52,7 @@ let UsersService = class UsersService {
         }
         catch (err) {
             console.log(err);
+            throw new Error('An error occurred while finding the user.');
         }
     }
     async findAll() {

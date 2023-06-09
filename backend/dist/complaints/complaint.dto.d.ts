@@ -1,7 +1,6 @@
-import { User } from "src/users/user.schema";
 export declare class CreateDto {
     title: string;
-    user: User;
+    matNumber: string;
     subject: string;
     category: string;
     description: string;
